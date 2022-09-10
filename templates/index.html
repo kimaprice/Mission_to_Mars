@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <hr>
+    <!-- Mars - Latest News Article-->
+    <div class="row" id="craiglist-listings">
+      <div class="col-md-12">
+        <h3 class="heading">Latest Mars News</h3>
+        <h4 class="heading">{{MarsInfo.NewsArtTitle}}</h4>
+        <small>{{MarsInfo.NewsArtDesc}}</small>
+      </div>
+    </div>
+    <hr>
+    <!-- Mars - Featured image and fact table-->
+    <div class="row" id="craiglist-listings">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <h3 class="heading">Featured Mars Image</h3>
+        <img src={{MarsInfo.FeatImage}} alt="Featured Mars Image" width = "100%">
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <h3 class="heading">Mars Facts</h3>
+        {{MarsInfo.FactTable | safe}}
+      </div>
+    </div>
+    <hr>
+    <!-- Mars - Hemisphere images-->
+    <div class="row">
+        <h3>Mars Hemispheres</h3>
+    </div>
+    <div class="row">
+        {% for hemi in MarsInfo.HemiImages %}
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h4>{{hemi.title}}</h4>
+                <img width = "100%" src={{hemi.img_url}} alt={{hemi.title}}>
+            </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <br>
+  </div>
+</body>
+
+</html>
